@@ -15,10 +15,13 @@ create table if not exists departments (
   name        text not null,
   approver    text not null check (approver in ('ceo','coo')),
   cost_center text,                          -- Division Cost Center ที่ขึ้นเป็นค่าตั้งต้นบนฟอร์ม
-  seq_start   int  not null default 0,       -- เลขรันเริ่มต้น เพื่อรันต่อจากเล่มเดิม (ข้อ 23)
   sort_order  int  not null default 0,
   active      boolean not null default true
 );
+
+-- เคยมีช่อง seq_start ไว้ให้เลขรันต่อจากเล่มกระดาษเดิม แต่มันเป็นพื้นถาวรที่ไม่รู้จักปี
+-- พอขึ้นปีใหม่เลขจึงไม่กลับไปเริ่ม 0001 บรรทัดนี้ลบทิ้งให้กับฐานข้อมูลที่สร้างไว้ก่อนแล้ว
+alter table departments drop column if exists seq_start;
 
 -- สาขา/หน่วยงานที่ใช้ของ — รหัส 2 หลักที่ไปอยู่ในเลขเอกสาร
 -- '00' สงวนไว้สำหรับใบที่ซื้อให้หลายสาขาพร้อมกัน
@@ -268,8 +271,8 @@ begin
 
   yr_be := extract(year from r.doc_date)::int + 543;
 
-  -- ลำดับถัดไปของฝ่ายนี้ในปีนี้ นับต่อจากเลขเริ่มต้นที่แอดมินตั้งไว้
-  select greatest(coalesce(max(p.seq), 0), d.seq_start) + 1 into next_seq
+  -- ลำดับถัดไปของฝ่ายนี้ในปีนี้ — นับเฉพาะใบในระบบ จึงกลับไปเริ่ม 0001 เองทุกวันที่ 1 มกราคม
+  select coalesce(max(p.seq), 0) + 1 into next_seq
     from pr p
    where p.department_id = r.department_id
      and extract(year from p.doc_date) = extract(year from r.doc_date);
