@@ -11,8 +11,7 @@ window.PR_CONFIG = {
 
   // ---- จำเป็น ----
   SUPABASE_URL:      'https://sdqhfqilpzvrumcosdjw.supabase.co',   // เช่น 'https://abcdefghijk.supabase.co'
-  SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkcWhmcWlscHp2cnVtY29zZGp3Iiwicm9sZSI6ImFub24i......HejuSTsIYjcu7FV5NOyXz4',
-
+  SUPABASE_ANON_KEY: 'sb_publishable_kz9UoquYcsRZcJCe1fOixg_-DfOJHVD',
   // ---- ข้อมูลบริษัทที่พิมพ์บนหัวใบ ----
   COMPANY_NAME: 'บริษัท สมใจบิซกรุ๊ป จำกัด',
 
