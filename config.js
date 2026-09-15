@@ -10,8 +10,8 @@
 window.PR_CONFIG = {
 
   // ---- จำเป็น ----
-  SUPABASE_URL:      '',   // เช่น 'https://abcdefghijk.supabase.co'
-  SUPABASE_ANON_KEY: '',   // ขึ้นต้นด้วย 'eyJ...' หรือ 'sb_publishable_...'
+  SUPABASE_URL:      'https://sdqhfqilpzvrumcosdjw.supabase.co',   // เช่น 'https://abcdefghijk.supabase.co'
+  SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6...',   // ขึ้นต้นด้วย 'eyJ...' หรือ 'sb_publishable_...'
 
   // ---- ข้อมูลบริษัทที่พิมพ์บนหัวใบ ----
   COMPANY_NAME: 'บริษัท สมใจบิซกรุ๊ป จำกัด',
